@@ -1,26 +1,28 @@
-#README FILE
-Programul editeaza imagini tranfosmate intr-o matrice tridimensionala formata din valorile culorilor in funcite de Rosu Verde si Albastru pentru fiecare pixel.
-Cuprinde diferite functii de editare : crop,flip,rotate,extend,copy paste si apply filter.
-Programul este operat prin intermediul introducerii anumitor comenzi.
-Lista de comenzi, ce paramteri necesita si ce schimba:
-e 	- 	Exit - închide programul
-l 	N M path 	Load - alocă și încarcă imaginea de dimensiune NxM aflată la calea path
-s 	index path 	Save - salvează imaginea de pe indexul index la calea specificată prin path
-ah 	index 	Apply Horizontal Flip - aplică operația de flip pe orizontală imaginii de la indexul index
-ar 	index 	Apply Rotate - aplică operația de rotație la stânga imaginii de la indexul index
-ac 	index x y w h 	Apply Crop - aplică operația de crop cu parametrii dați imaginii de la indexul index
-ae 	index rows cols R G B 	Apply Extend - aplică operația de extend cu parametrii dați imaginii de la indexul index
-ap 	index_dst index_src x y 	Apply Paste - aplică operația de paste cu parametrii dați imaginii de la indexul index_dst
-cf 	size [list of values] 	Create filter - alocă și crează un filtru de dimensiune size cu valorile date de lista de valori (exemplu: dacă se creează un filtru de dimensiune 3, atunci după size vor urma 9 valori
-af 	index_img index_filter 	Apply filter - aplică filtrul de pe indexul index_filter pe imaginea de pe indexul index_img
-df 	index_filter 	Delete filter - șterge și dezalocă filtrul de pe indexul index_filter
-di 	index_img 	Delete image - șterge și dezalocă imaginea de pe indexul index_img
+# Image Editor Project
 
-Programul nu are memory leaks si opereaza perfect atat timp cat sunt respectate urmatoarele reguli:
+**3D Matrix-Based Image Processing | C / C++**
 
-    path-urile nu vor avea lungime mai mare de 100 de caractere (puteți folosi o variabilă char path[100])
-    path-urile nu vor conține spații (pot fi citite cu scanf(”%s”, path))
-    fișierul din care se încarcă o imagine există și este valid
-    comenzile date sunt mereu valide (nu se va da ca input o comandă inexistentă)
-    parametrii comenzilor sunt mereu valizi (e.g. nu se va cere aplicarea unei procesări pe un index care nu există, sau paste la niște coordonate care încep în afara imaginii destinație etc)
+- **Overview:**  
+  - Program edits images represented as a 3D matrix of RGB values for each pixel  
+  - Supports multiple image processing operations: crop, flip, rotate, extend, copy-paste, and apply filters  
+  - Operated entirely via command-line input  
 
+- **Supported Commands:**  
+  - `e` – Exit: closes the program  
+  - `l N M path` – Load: allocates and loads an NxM image from `path`  
+  - `s index path` – Save: saves the image at `index` to `path`  
+  - `ah index` – Apply Horizontal Flip: flips the image at `index` horizontally  
+  - `ar index` – Apply Rotate: rotates the image at `index` left  
+  - `ac index x y w h` – Apply Crop: crops the image at `index` with given coordinates and size  
+  - `ae index rows cols R G B` – Apply Extend: extends the image at `index` with given rows, cols, and color  
+  - `ap index_dst index_src x y` – Apply Paste: pastes `index_src` image into `index_dst` at coordinates `(x, y)`  
+  - `cf size [values]` – Create Filter: creates a filter of given size and values  
+  - `af index_img index_filter` – Apply Filter: applies filter `index_filter` on image `index_img`  
+  - `df index_filter` – Delete Filter: deletes and deallocates the filter at `index_filter`  
+  - `di index_img` – Delete Image: deletes and deallocates the image at `index_img`  
+
+- **Reliability & Constraints:**  
+  - Fully memory-leak free  
+  - Paths limited to 100 characters, no spaces  
+  - Input files are assumed valid  
+  - Commands and parameters are always valid and within bounds  
